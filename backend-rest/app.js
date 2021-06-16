@@ -3,12 +3,14 @@ const app = express()
 
 const errorMiddleware = require('./middlewares/error')
 
-const { sequelize } = require('./models')
+// const { sequelize } = require('./models')
+
+const storeRoute = require('./routes/storeRoute')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use("/store", storeController);
+app.use("/store", storeRoute);
 // app.use("/catagory", catagoryController);
 // app.use("/menu", menuController);
 
@@ -18,7 +20,7 @@ app.use((req, res, next) => {
 
 app.use(errorMiddleware);
 
-sequelize.sync({ force: true}).then(() => console.log('DB sync'))
+// sequelize.sync({ force: true}).then(() => console.log('DB sync'))
 
 port = 8888
 app.listen(port, () => console.log(`server is running on port ${port}`))
