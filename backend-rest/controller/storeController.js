@@ -30,10 +30,11 @@ exports.getStore = async (req, res, next) => {
 
 exports.createStore = async (req, res, next) => {
   try {
-    const { name, description } = req.body
+    const { name, description, rating = 5 } = req.body
     const store = await Store.create({
       name,
-      description
+      description,
+      rating
     })
 
     res.status(201).json({ store })
@@ -68,6 +69,7 @@ exports.deleteStore = async (req, res, next) => {
   try {
     const { id } = req.params
     const store = await Store.findOne({ where: { id } })
+    if (!store) return res.status(400).json({ message: 'store not found'})
 
     await store.destroy();
 
