@@ -31,9 +31,6 @@ exports.getStore = async (req, res, next) => {
 exports.createStore = async (req, res, next) => {
   try {
     const { name, description, rating = 5 } = req.body
-
-    if (!name) return res.status(400).json({ message : 'name is required' })
-
     const store = await Store.create({
       name,
       description,
