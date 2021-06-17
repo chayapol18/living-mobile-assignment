@@ -3,7 +3,7 @@ const app = express()
 
 const errorMiddleware = require('./middlewares/error')
 
-const { sequelize } = require('./models')
+// const { sequelize } = require('./models')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 app.use(errorMiddleware);
 
-sequelize.sync({ force: true}).then(() => console.log('DB sync'))
+// sequelize.sync({ force: true}).then(() => console.log('DB sync'))
 
 port = 8888
 app.listen(port, () => console.log(`server is running on port ${port}`))
