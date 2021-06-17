@@ -31,6 +31,9 @@ exports.getStore = async (req, res, next) => {
 exports.createStore = async (req, res, next) => {
   try {
     const { name, description, rating = 5 } = req.body
+
+    if (!name) return res.status(400).json({ message : 'name is required' })
+
     const store = await Store.create({
       name,
       description,
@@ -48,6 +51,9 @@ exports.updateStore = async (req, res, next) => {
   try {
     const { id } = req.params
     const { name, description, rating } = req.body
+
+    const store = await Store.findOne({ where: { id } })
+    if (!store) return res.status(400).json({ message: 'Can not update, store not found' })
 
     await Store.update({
       name,
