@@ -47,8 +47,10 @@ exports.updateMenu = async (req, res, next) => {
     const { id } = req.params
     const { name, price, catagoryId } = req.body
 
-    const category = await Catagory.findOne({ where: { id: catagoryId }})
-    if (!category) return res.status(400).json({ message: 'This category is not defined'})
+    if (catagoryId) {
+      const category = await Catagory.findOne({ where: { id: catagoryId }})
+      if (!category) return res.status(400).json({ message: 'This category is not defined'})
+    }
 
     await Menu.update({
       name,
