@@ -7,11 +7,15 @@ const errorMiddleware = require('./middlewares/error')
 
 const storeRoute = require('./routes/storeRoute')
 
+const catagoryRoute = require('./routes/categoryRoute')
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/store", storeRoute);
 // app.use("/catagory", catagoryController);
+// app.use("/store", storeController);
+app.use("/category", catagoryRoute);
 // app.use("/menu", menuController);
 
 app.use((req, res, next) => {
