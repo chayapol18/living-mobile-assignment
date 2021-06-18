@@ -5,10 +5,12 @@ const errorMiddleware = require('./middlewares/error')
 
 // const { sequelize } = require('./models')
 
+const storeRoute = require('./routes/storeRoute')
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use("/store", storeController);
+app.use("/store", storeRoute);
 // app.use("/catagory", catagoryController);
 // app.use("/menu", menuController);
 
