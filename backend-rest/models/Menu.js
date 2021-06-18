@@ -13,20 +13,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       underscored: true,
     }
-  );
-
-  module.exports = (sequelize, DataTypes) => {
-    const Catagory = sequelize.define(
-      "Catagory",
-      {
-        name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-      },
-      {
-        underscored: true,
-      }
     );
   
     Menu.associate = (models) => {
@@ -38,10 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         OnUpdate: "RESTRICT",
         onDelete: "RESTRICT",
       });
-    };
-  
-    return Catagory;
-  };
+    }
 
   return Menu;
 };
