@@ -9,14 +9,16 @@ const storeRoute = require('./routes/storeRoute')
 
 const catagoryRoute = require('./routes/categoryRoute')
 
+
+
+const menuRoute = require('./routes/menuRoute')
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/store", storeRoute);
-// app.use("/catagory", catagoryController);
-// app.use("/store", storeController);
 app.use("/category", catagoryRoute);
-// app.use("/menu", menuController);
+app.use("/menu", menuRoute);
 
 app.use((req, res, next) => {
   res.status(404).json({ message: "path not found on this server" });
