@@ -6,11 +6,7 @@ const errorMiddleware = require('./middlewares/error')
 // const { sequelize } = require('./models')
 
 const storeRoute = require('./routes/storeRoute')
-
 const catagoryRoute = require('./routes/categoryRoute')
-
-
-
 const menuRoute = require('./routes/menuRoute')
 
 app.use(express.json());
@@ -30,3 +26,5 @@ app.use(errorMiddleware);
 
 port = 8888
 app.listen(port, () => console.log(`server is running on port ${port}`))
+
+module.exports = app

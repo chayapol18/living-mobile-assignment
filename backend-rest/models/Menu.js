@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
         },
         OnUpdate: "RESTRICT",
-        onDelete: "RESTRICT",
+        onDelete: "CASCADE",
       });
     }
 

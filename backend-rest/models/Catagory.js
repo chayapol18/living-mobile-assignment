@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         name: "catagoryId",
       },
       OnUpdate: "RESTRICT",
-      onDelete: "RESTRICT",
+      onDelete: "CASCADE",
     });
 
     Catagory.belongsTo(models.Store, {
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       OnUpdate: "RESTRICT",
-      onDelete: "RESTRICT",
+      onDelete: "CASCADE",
     });
   };
 

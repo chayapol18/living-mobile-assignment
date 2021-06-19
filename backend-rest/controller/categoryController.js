@@ -46,8 +46,10 @@ exports.updateCatagory = async (req, res, next) => {
     const { id } = req.params
     const { name, storeId } = req.body
 
-    const store = await Store.findOne({ where: { id: storeId }})
-    if (!store) return res.status(400).json({ message: 'This store is not defined'})
+    if (storeId) {
+      const store = await Store.findOne({ where: { id: storeId }})
+      if (!store) return res.status(400).json({ message: 'This store is not defined'})
+    }
 
     await Catagory.update({
       name,
