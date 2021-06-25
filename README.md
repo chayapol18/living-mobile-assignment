@@ -1,6 +1,6 @@
-# Group Name : [ใส่ชื่อกลุ่ม]
+# Group Name : [Pfizer]
 Backoffice Assignment
-- Store: 
-- Category: 
-- Menu: 
+- Store: นาย ขจรศักดิ์ นาคสม
+- Category: นาย ชยพล ศิวะเศรษฐี
+- Menu: นาย นักกระวี คืนคลีบ
 # เกณท์ในการแบ่งงาน
