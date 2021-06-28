@@ -1,13 +1,12 @@
 <template>
-  <div>
-    {{this.categoryId}}
+  <div class="category-container">
     <div class="head-category">
-      <p style="font-size: 34px; font-weight: 700;">Category</p>
-      <el-button type="primary" round @click="addDialogVisible = true"><i class="el-icon-plus" style="margin-right: 9px"></i> Add New Category</el-button>
+      <p style="font-size: 34px; font-weight: 500;">Category</p>
+      <el-button id="addButton" type="primary" round @click="addDialogVisible = true"><i class="el-icon-plus" style="margin-right: 9px"></i> Add New Category</el-button>
     </div>
 
-    <data-tables :data="tableData" :total="10">
-      <div slot="empty" style="color: red">Data is empty</div>
+    <data-tables :data="tableData">
+      <div slot="empty" style="color: red">Category data is empty</div>
       <el-table-column prop="id" label="ID" width="200" sortable>
       </el-table-column>
       <el-table-column prop="Store.name" label="Store" width="400" sortable>
@@ -16,8 +15,9 @@
       </el-table-column>
       <el-table-column fixed="right">
         <template slot-scope="scope">
-          <el-button type="text" size="large" @click="editDialogVisible = true; getCategoryData(scope.row)"><i class="el-icon-edit"></i></el-button>
-          <el-button type="text" size="large" @click="deleteDialogVisible = true; getCategoryData(scope.row)"><i class="el-icon-delete"></i></el-button>
+          <el-button class="rowButton" type="text" size="large" @click="editDialogVisible = true; getCategoryData(scope.row)"><i class="el-icon-edit"></i></el-button>
+          <el-button class="rowButton" type="text" size="large" @click="copyRow(scope.row)"><i class="el-icon-copy-document"></i></el-button>
+          <el-button class="rowButton" type="text" size="large" @click="deleteDialogVisible = true; getCategoryData(scope.row)"><i class="el-icon-delete"></i></el-button>
         </template>
       </el-table-column>
     </data-tables>
@@ -26,7 +26,7 @@
     <el-dialog
       title="Add Category"
       :visible.sync="addDialogVisible"
-      width="50%"
+      width="40%"
       :before-close="handleClose">
       <el-form :model="formAdd" :rules="rules" ref="formAdd">
         <el-form-item label="Name" prop="name">
@@ -54,7 +54,7 @@
     <el-dialog
       title="Edit Category"
       :visible.sync="editDialogVisible"
-      width="50%"
+      width="40%"
       :before-close="handleEditClose">
       <el-form :model="formEdit" :rules="rules" ref="formEdit">
         <el-form-item label="Name" prop="name">
@@ -82,8 +82,7 @@
     <el-dialog
       title="Delete Category"
       :visible.sync="deleteDialogVisible"
-      width="30%"
-      :before-close="handleDeleteClose">
+      width="30%">
       <span>Are you sure to delete this Category ?</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="deleteDialogVisible = false">Cancel</el-button>
@@ -140,13 +139,6 @@ export default {
         })
         .catch(() => {});
     },
-    handleDeleteClose(done) {
-      this.$confirm('Are you sure to close delete dialog?')
-        .then(() => {
-          done();
-        })
-        .catch(() => {});
-    },
     async fetchData() {
       try {
         const response =  await axios.get('http://localhost:8888/category')
@@ -188,6 +180,18 @@ export default {
       }
     },
 
+    async copyRow (row) {
+      try {
+        await axios.post(`http://localhost:8888/category`, {
+          name: row.name,
+          storeId: row.Store.id,
+        })
+        this.fetchData()
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    
     async editCategory(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -229,6 +233,19 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 17px;
+}
+
+.category-container {
+  padding: 8px 149px 14px;
+}
+
+#addButton {
+  background-color: #28B7FF;
+  border-style: none;
+}
+
+.rowButton {
+  color: #787878;
 }
 
 </style>
