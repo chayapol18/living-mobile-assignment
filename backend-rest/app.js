@@ -1,11 +1,10 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-const cors = require('cors');
-
+const cors = require('cors')
 const errorMiddleware = require('./middlewares/error')
 
 // const { sequelize } = require('./models')
-
 const storeRoute = require('./routes/storeRoute')
 const catagoryRoute = require('./routes/categoryRoute')
 const menuRoute = require('./routes/menuRoute')
@@ -26,7 +25,7 @@ app.use(errorMiddleware);
 
 // sequelize.sync({ force: true}).then(() => console.log('DB sync'))
 
-port = 8888
+port = process.env.PORT
 app.listen(port, () => console.log(`server is running on port ${port}`))
 
 module.exports = app
