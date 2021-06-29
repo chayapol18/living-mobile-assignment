@@ -2,7 +2,7 @@
   <div class="store">
     <!-- table -->
 
-    <div class="topic">
+    <div class="topic-store">
       <div class="title">Store</div>
 
       <div class="addNewStore">
@@ -15,8 +15,7 @@
       </div>
     </div>
     <div class="contents">
-      <data-tables :data="dataFromApi" :total="10" @sort-change="sortChange" @current-page="currentPage"
-        @size-change="sizeChange" :header-cell-style="{ background: 'blue' }">
+      <data-tables :data="dataFromApi" :total="10" :header-cell-style="{ background: 'blue' }">
         <div slot="empty" style="color: red">Users is empty</div>
         <el-table-column prop="id" label="ID" width="200" sortable>
         </el-table-column>
@@ -263,14 +262,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .store{
   margin-left: 171px;
   margin-right: 171px;
 }
 
-.topic{
+.topic-store{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -305,10 +304,6 @@ export default {
 }
 
 .dialog-add{
-  border-radius: 8px;
-}
-
-.el-dialog{
   border-radius: 8px;
 }
 

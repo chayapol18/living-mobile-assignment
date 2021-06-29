@@ -159,7 +159,7 @@ export default {
         const response =  await axios.get('http://localhost:8888/category')
         const data = await axios.get('http://localhost:8888/store')
         console.log(response)
-	this.tableData = response.data.categories
+        this.tableData = response.data.categories
         // const store = data.map()
         this.storeData = data.data.stores
       } catch (err) {

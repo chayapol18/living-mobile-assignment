@@ -47,3 +47,7 @@ table {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&display=swap');
+
+.el-dialog{
+  border-radius: 8px;
+}

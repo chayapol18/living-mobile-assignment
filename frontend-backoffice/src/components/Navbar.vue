@@ -1,14 +1,14 @@
 <template>
 	<div class="detail-navbar">
-		<div class="foodstory">
+		<div class="foodstory"  @click="goTo('/')">
 			<img src="../assets/logo.png" alt="" height="31px" width="31px">
 			<img class="foodstory-title" src="../assets/FoodStory_title.png" alt="" height="24px" width="112px">
 			<!-- <p class="logo-name">FoodStory</p> -->
 		</div>
 		<div class="button-all">
-			<button class="each-button" @click="goTo('/')">Store</button>
-			<button class="each-button" style="padding: 8px 8px; width: 90px" @click="goTo('/category')">Category</button>
-			<button class="each-button" @click="goTo('/menu')">Menu</button>
+			<button :class="['each-button',{'active': pageName == 'StorePage'}] " @click="goTo('/')">Store</button>
+			<button :class="['each-button',{'active': pageName == 'CategoryPage'}] " style="padding: 8px 8px; width: 90px" @click="goTo('/category')">Category</button>
+			<button :class="['each-button',{'active': pageName == 'MenuPage'}] " @click="goTo('/menu')">Menu</button>
 		</div>
 	</div>
 </template>
@@ -22,6 +22,11 @@ export default {
 			}).catch(err => {
 				console.log(err);
 			})
+		}
+	},
+	computed: {
+		pageName() {
+			return this.$route.name
 		}
 	}
 }
@@ -64,6 +69,12 @@ export default {
 }
 
 .each-button:hover {
+	color: #28B7FF;
+	background-color: white;
+	border: 0;
+	cursor: pointer;
+}
+.each-button.active {
 	color: #28B7FF;
 	background-color: white;
 	border: 0;
