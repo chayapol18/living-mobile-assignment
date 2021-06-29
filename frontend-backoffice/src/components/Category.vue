@@ -2,7 +2,17 @@
   <div class="category-container">
     <div class="head-category">
       <p style="font-size: 34px; font-weight: 500;">Category</p>
-      <el-button id="addButton" type="primary" round @click="addDialogVisible = true"><i class="el-icon-plus" style="margin-right: 9px"></i> Add New Category</el-button>
+
+      <div>
+        <VueJsonToCsv
+          :json-data="xlsFormat" :csv-title="'category'">
+          <el-button type="success" round style="margin-right: 10px;">
+            <i class="el-icon-download"></i> Download Category Data
+          </el-button>
+        </VueJsonToCsv>
+
+        <el-button id="addButton" type="primary" round @click="addDialogVisible = true"><i class="el-icon-plus" style="margin-right: 9px"></i> Add New Category</el-button>
+      </div>
     </div>
 
     <data-tables :data="tableData">
@@ -95,8 +105,13 @@
 
 <script>
 import axios from 'axios'
+import VueJsonToCsv from 'vue-json-to-csv'
+
 
 export default {
+  components: {
+    VueJsonToCsv
+  },
   data () {
     return {
       tableData: [],
@@ -223,6 +238,16 @@ export default {
   },
   created () {
     this.fetchData()
+  },
+  computed: {
+    xlsFormat() {
+      return this.tableData.map(item => {
+        return {
+          store: item.Store.name,
+          category: item.name
+          }
+      })
+    }
   }
 }
 </script>
