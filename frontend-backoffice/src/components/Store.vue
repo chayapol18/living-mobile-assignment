@@ -14,7 +14,7 @@
         <div slot="empty" style="color: red">Users is empty</div>
         <el-table-column prop="id" label="ID" width="200" sortable>
         </el-table-column>
-        <el-table-column prop="name" label="Name" width="400" sortable>
+        <el-table-column prop="name" label="Name" width="300" sortable>
         </el-table-column>
         <el-table-column prop="description" label="Description" width="200" sortable>
         </el-table-column>
@@ -60,16 +60,18 @@
 
         <el-form-item label="Store Name" prop="name">
           <div class="m-g-t-17">
-            <el-input class="m-g-t-6" v-model="form.name" autocomplete="off"></el-input>
+            <el-input v-model="form.name" autocomplete="off"></el-input>
           </div>
         </el-form-item>
 
         <div class="m-g-t-17">
-          <span class="form-title">Description</span>
-          <el-input class="m-g-t-6" v-model="form.description" autocomplete="off"></el-input>
+          <!-- <span class="form-title">Description</span> -->
+          <div class="m-g-b-6">Description</div>
+          <el-input v-model="form.description" autocomplete="off"></el-input>
         </div>
         <div class="m-g-t-17">
-          <span class="form-title">Rating</span>
+          <!-- <span class="form-title">Rating</span> -->
+          <div class="m-g-b-6">Rating</div>
           <el-select v-model="form.rating" placeholder="Select">
             <el-option v-for="item in rate" :key="item.value" :label="item.label" :value="item.value"></el-option>
           </el-select>
@@ -312,7 +314,7 @@ export default {
 }
 
 .el-dialog__body{
-  padding: 0px;
+  /* padding: 0px; */
   border-top: 1px solid #D9D9D9;
 }
 
@@ -338,13 +340,17 @@ export default {
   margin-top: 34px;
 }
 
+.m-g-b-6{
+  margin-bottom: 8px;
+}
+
 .p-d-r-85{
   padding-right: 85px;
 }
 
 .btn{
   width: 124px;
-  height: 44px;
+  height: 44px; 
   border-radius: 100px;
   border: none;
 }
@@ -368,6 +374,9 @@ export default {
 /* .el-dialog__footer{
   padding-right: 85px;
 } */
+.title{
+  font-size: 34px;
+}
 
 .form-title{
   font-size: 14px;
@@ -391,6 +400,21 @@ export default {
 .el-dialog__footer{
   margin-top: 34px;
 }
+
+.el-pagination{
+  margin-top: 20px;
+}
+
+.el-dialog__title{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.font-s-w{
+  font-size: 14px;
+  font-weight: 500;
+}
+
 
 
 
