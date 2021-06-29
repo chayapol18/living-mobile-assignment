@@ -3,6 +3,12 @@
     <div style="display: flex; justify-content: space-between;">
       <p class="topic">Menu</p>
       <div class="add-button">
+         <VueJsonToCsv
+          :json-data="menuData" :csv-title="'menu'">
+          <el-button type="info" round style="margin-right: 10px;">
+            <i class="el-icon-download"></i> Download Menu Data
+          </el-button>
+        </VueJsonToCsv>
         <el-button @click="dialogVisible = true" class="size" type="primary">+ Add New Menu</el-button>
       </div>
     </div>
@@ -93,9 +99,10 @@
 
 <script>
 import axios from 'axios'
+import VueJsonToCsv from 'vue-json-to-csv'
 export default {
-  props:{
-    
+  components: {
+    VueJsonToCsv
   },
   data() {
     return {
