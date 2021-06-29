@@ -2,7 +2,12 @@ const { Store, Catagory } = require('../models')
 
 exports.getAllCategory = async (req, res, next) => {
   try {
-    const categories = await Catagory.findAll()
+    const categories = await Catagory.findAll({
+      include: [{
+        model: Store,
+        attributes: ["id", "name"]
+      }]
+    })
 
     res.status(200).json({ categories })
 
@@ -25,6 +30,7 @@ exports.getCategory = async (req, res, next) => {
 exports.createCategory = async (req, res, next) => {
   try {
     const { name, storeId } = req.body
+    if (!name) return res.status(400).json({ message: 'name is required'})
 
     const store = await Store.findOne({ where: { id: storeId }})
     if (!store) return res.status(400).json({ message: 'This store is not defined'})
@@ -45,6 +51,8 @@ exports.updateCatagory = async (req, res, next) => {
   try {
     const { id } = req.params
     const { name, storeId } = req.body
+
+    if (!name) return res.status(400).json({ message: 'name is required!'})
 
     if (storeId) {
       const store = await Store.findOne({ where: { id: storeId }})

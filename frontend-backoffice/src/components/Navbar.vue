@@ -1,7 +1,7 @@
 <template>
 	<div class="detail-navbar">
 		<div class="foodstory">
-			<img src="../assets/Logo.png" alt="" height="31px" width="31px">
+			<img src="../assets/logo.png" alt="" height="31px" width="31px">
 			<img class="foodstory-title" src="../assets/FoodStory_title.png" alt="" height="24px" width="112px">
 			<!-- <p class="logo-name">FoodStory</p> -->
 		</div>
