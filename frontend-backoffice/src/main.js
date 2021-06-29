@@ -7,11 +7,14 @@ import VueDataTables from 'vue-data-tables/dist/data-tables.min.js'
 import 'element-ui/lib/theme-chalk/index.css'
 import Locale from 'element-ui/lib/locale'
 import enLocale from 'element-ui/lib/locale/lang/th'
+import VueJsonToCsv from 'vue-json-to-csv'
+
 
 Locale.use(enLocale);
 
 Vue.use(ElementUI);
 Vue.use(VueDataTables)
+Vue.use(VueJsonToCsv);
 Vue.config.productionTip = false
 
 new Vue({

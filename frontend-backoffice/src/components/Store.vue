@@ -4,8 +4,14 @@
 
     <div class="topic">
       <div class="title">Store</div>
+
       <div class="addNewStore">
-        <el-button class="btn-add" @click="showDialogAddStore"><i class="el-icon-plus"></i>Add New Store</el-button>
+        <VueJsonToCsv :json-data="dataFromApi" :csv-title="'Store'">
+          <el-button class="btn-report">
+            <i class="el-icon-download"></i>Download Report
+          </el-button>
+        </VueJsonToCsv>
+        <el-button class="btn-add m-g-l-6" @click="showDialogAddStore"><i class="el-icon-plus"></i>Add New Store</el-button>
       </div>
     </div>
     <div class="contents">
@@ -100,7 +106,11 @@
 
 <script>
 import axios from 'axios';
+import VueJsonToCsv from 'vue-json-to-csv';
 export default {
+  components :{
+    VueJsonToCsv
+  },
   data() {
     // 
     var validateStoreName = ( rule, value, callback)=>{
@@ -305,6 +315,20 @@ export default {
   color: #ffff;
 }
 
+.btn-report{
+  width: 188px;
+  height: 44px;
+  border-radius: 100px;
+  border: none;
+  background: #FDCC50;
+  color: #ffff;
+}
+
+.btn-report:hover {
+  color: #FDCC50;
+  background:#faf1da;
+}
+
 .dialog-add{
   border-radius: 8px;
 }
@@ -342,6 +366,10 @@ export default {
 
 .m-g-b-6{
   margin-bottom: 8px;
+}
+
+.m-g-l-6{
+  margin-left: 6px;
 }
 
 .p-d-r-85{
