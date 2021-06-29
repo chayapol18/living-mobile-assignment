@@ -37,31 +37,6 @@
     </div>
     <!-- dialog addStore -->
     <el-dialog class="dialog-add" title="Add Store" :visible.sync="dialogFormVisible">
-      <!-- <el-form class="form" :model="form">
-
-        <el-form-item label="Store Name" prop="age" :rules="[{ required: true, message: 'store name is required'}]">
-          <div class="m-g-t-17">
-            <el-input class="m-g-t-6" v-model="form.name" autocomplete="off"></el-input>
-          </div>
-        </el-form-item>
-
-        <div class="m-g-t-17">
-          <span class="form-title">Description</span>
-          <el-input class="m-g-t-6" v-model="form.description" autocomplete="off"></el-input>
-        </div>
-        <div class="m-g-t-17">
-          <div>Description</div>
-          <el-select v-model="form.rating" placeholder="Select">
-            <el-option v-for="item in rate" :key="item.value" :label="item.label" :value="item.value"></el-option>
-          </el-select>
-        </div>
-      </el-form> -->
-      <!-- <span slot="footer" class="dialog-footer p-d-r-85">
-        <button class="btn bg-white color-blue" @click="dialogFormVisible = false">Cancel</button>
-        <button class="btn bg-blue color-white" v-if="showEditBtn == true" @click="editData()" >Edit Store</button>
-        <button class="btn bg-blue color-white" v-if="showSaveBtn == true" @click="createData">Add Store</button>
-      </span> -->
-      <!--  -->
       <el-form class="form" :model="form" status-icon :rules="rules" ref="form">
 
         <el-form-item label="Store Name" prop="name">
